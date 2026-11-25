@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideas de aplicaciones útiles para el negocio</title>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background: #f0f2f5; color: #333; }
+    .slide { width: 100%; max-width: 1024px; margin: 20px auto; background: #fff; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); overflow: hidden; min-height: 500px; display: flex; flex-direction: column; }
+    .slide-header { background: #3d5a96; padding: 18px 30px; display: flex; align-items: center; justify-content: space-between; }
+    .slide-header h2 { color: #fff; font-size: 20px; font-weight: 700; }
+    .slide-header .num { color: rgba(255,255,255,0.6); font-size: 14px; }
+    .slide-body { padding: 30px; flex: 1; }
+    .slide-footer { background: #2e4575; padding: 10px 30px; display: flex; justify-content: space-between; color: rgba(255,255,255,0.7); font-size: 12px; }
+    .portada { min-height: 90vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; }
+    .portada-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #3d5a96 0%, #e8755c 50%, #d05a7e 100%); z-index: 0; }
+    .portada .franja1 { position: absolute; bottom: 0; left: 0; right: 0; height: 12px; background: #e8755c; z-index: 1; }
+    .portada .franja2 { position: absolute; top: 0; right: 0; width: 25%; height: 8%; background: #d05a7e; z-index: 1; }
+    .portada .franja3 { position: absolute; bottom: 0; left: 0; width: 10%; height: 18%; background: #d05a7e; z-index: 1; }
+    .portada .franja4 { position: absolute; bottom: 0; right: 0; width: 15%; height: 12%; background: #e8755c; z-index: 1; }
+    .portada-content { position: relative; z-index: 2; padding: 40px; }
+    .portada .campus { color: rgba(255,255,255,0.7); font-size: 13px; letter-spacing: 4px; font-weight: 700; margin-bottom: 40px; }
+    .portada h1 { color: #fff; font-size: 48px; font-weight: 900; line-height: 1.2; margin-bottom: 8px; text-shadow: 3px 3px 12px rgba(0,0,0,0.2); }
+    .portada h1 span { display: block; font-size: 32px; font-weight: 600; }
+    .portada .tema-label { color: rgba(255,255,255,0.85); font-size: 18px; margin-top: 50px; }
+    .portada .tema { color: #fff; font-size: 28px; font-weight: 700; margin-top: 8px; }
+    .portada .instituto { color: rgba(255,255,255,0.75); font-size: 15px; margin-top: 50px; }
+    .portada .fecha { color: rgba(255,255,255,0.55); font-size: 13px; margin-top: 10px; }
+    h3 { color: #3d5a96; font-size: 22px; margin-bottom: 20px; }
+    h4 { color: #3d5a96; font-size: 18px; margin-bottom: 12px; }
+    .block { background: #fdf4f0; border-left: 5px solid #e8755c; padding: 18px 20px; border-radius: 0 10px 10px 0; margin: 15px 0; }
+    .block-title { font-weight: 700; color: #e8755c; margin-bottom: 6px; }
+    .block-blue { background: #eff2f8; border-left: 5px solid #3d5a96; }
+    .block-blue .block-title { color: #3d5a96; }
+    .block-pink { background: #fdf0f4; border-left: 5px solid #d05a7e; }
+    .block-pink .block-title { color: #d05a7e; }
+    .block-vino { background: #fdf0f2; border-left: 5px solid #691b31; }
+    .block-vino .block-title { color: #691b31; }
+    ul, ol { padding-left: 22px; line-height: 2; }
+    li { margin-bottom: 4px; }
+    .columns { display: flex; gap: 30px; }
+    .columns > div { flex: 1; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; }
+    th { background: #3d5a96; color: #fff; }
+    tr:nth-child(even) { background: #f8f9fc; }
+    .tag { display: inline-block; background: #3d5a96; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-right: 6px; }
+    .center { text-align: center; }
+    .final { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center; }
+    .final h2 { color: #3d5a96; font-size: 32px; margin-bottom: 20px; }
+    .final p { color: #666; font-size: 18px; }
+    .nav-bar { max-width: 1024px; margin: 10px auto; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .nav-bar button { background: #3d5a96; color: #fff; border: none; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 13px; transition: all 0.2s; }
+    .nav-bar button:hover { background: #e8755c; transform: translateY(-2px); }
+    .nav-bar button.activo { background: #d05a7e; }
+    .nav-controls { max-width: 1024px; margin: 10px auto; display: flex; gap: 10px; justify-content: center; }
+    .nav-controls button { background: #3d5a96; color: #fff; border: none; padding: 10px 28px; border-radius: 25px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; transition: all 0.2s; }
+    .nav-controls button:hover { background: #e8755c; transform: scale(1.05); }
+    .counter { max-width: 1024px; margin: 5px auto; text-align: center; font-size: 13px; color: #888; }
+    @media (max-width: 768px) {
+        .portada h1 { font-size: 32px; }
+        .portada h1 span { font-size: 24px; }
+        .portada .tema { font-size: 20px; }
+        .columns { flex-direction: column; }
+        .slide-body { padding: 20px; }
+        .slide-header h2 { font-size: 16px; }
+    }
+
+</style>
+</head>
+<body>
+
+<div class="nav-controls">
+    <button onclick="ant()">&#9664; Anterior</button>
+    <button onclick="sig()">Siguiente &#9654;</button>
+</div>
+<div class="counter" id="counter"></div>
+
+<div id="slides-container"></div>
+
+<script>
+const PORTADA = {
+    "etiqueta": "Tema 1.2 — Unidad 1",
+    "tema": "Ideas de aplicaciones<br>útiles para el negocio",
+    "instituto": "Instituto de Capacitación para el Trabajo del Estado de Hidalgo"
+};
+const slides = [
+    {
+        "tipo": "portada"
+    },
+    {
+        "titulo": "Índice",
+        "num": "2 / 33",
+        "body": "\n    <div class=\"columns\" style=\"font-size:18px;line-height:2.2;\">\n        <div><strong style=\"color:#3d5a96;\">1. Elegir bien</strong><br>\n        - Por qué una app<br>\n        - Criterio de elección<br>\n        - Ideas por giro<br><br>\n        <strong style=\"color:#3d5a96;\">2. Cotizadores</strong><br>\n        - Qué resuelven<br>\n        - Anatomía<br>\n        - Ejemplo</div>\n        <div><strong style=\"color:#3d5a96;\">3. Finanzas y menús</strong><br>\n        - Precio y margen<br>\n        - Punto de equilibrio<br>\n        - Menús con totales<br><br>\n        <strong style=\"color:#3d5a96;\">4. Marketplaces</strong><br>\n        - Qué son<br>\n        - Versión realista<br>\n        - Catálogo con WhatsApp<br><br>\n        <strong style=\"color:#3d5a96;\">5. Cerrar</strong><br>\n        - Actividad, rúbrica y resumen</div>\n    </div>\n    "
+    },
+    {
+        "titulo": "Objetivo de aprendizaje",
+        "num": "3 / 33",
+        "body": "\n    <p style=\"font-size:18px;line-height:1.7;margin-bottom:18px;\">Al terminar podrás <strong>identificar qué aplicaciones resuelven necesidades reales de tu negocio</strong> y describir la más útil para empezar.</p>\n    <div class=\"block block-blue\">\n        <div class=\"block-title\">Lo que sabrás hacer</div>\n        <ul>\n            <li>Reconocer una tarea que vale la pena convertir en app.</li>\n            <li>Distinguir cotizadores, finanzas, menús y marketplaces.</li>\n            <li>Elegir tu primera idea con criterios claros.</li>\n            <li>Convertir la idea en una descripción lista para AI Studio.</li>\n        </ul>\n    </div>\n    "
+    },
+    {
+        "titulo": "¿Por qué una app y no una hoja de cálculo?",
+        "num": "4 / 33",
+        "body": "\n    <div class=\"columns\">\n        <div>\n            <strong style=\"color:#3d5a96;\">Hoja de cálculo</strong>\n            <ul>\n                <li>Flexible y potente.</li>\n                <li>Requiere saber fórmulas.</li>\n                <li>Se comparte como archivo.</li>\n                <li>Fácil de romper sin querer.</li>\n            </ul>\n        </div>\n        <div>\n            <strong style=\"color:#3d5a96;\">Aplicación</strong>\n            <ul>\n                <li>Hace una sola tarea bien.</li>\n                <li>No requiere saber fórmulas.</li>\n                <li>Se comparte con un enlace.</li>\n                <li>Guía al usuario paso a paso.</li>\n            </ul>\n        </div>\n    </div>\n    <div class=\"block block-blue\">\n        <div class=\"block-title\">Cuándo conviene una app</div>\n        Cuando la tarea la hace alguien que no maneja Excel, se repite muchas veces o debe funcionar desde el celular.\n    </div>\n    "
+    },
+    {
+        "titulo": "El criterio para elegir",
+        "num": "5 / 33",
+        "body": "\n    <table>\n        <tr><th>Criterio</th><th>Pregunta</th><th>Semáforo</th></tr>\n        <tr><td>Se repite</td><td>¿La haces varias veces por semana?</td><td>Sí = buena candidata</td></tr>\n        <tr><td>Tiene datos</td><td>¿Existe una lista de precios o productos?</td><td>Sí = buena candidata</td></tr>\n        <tr><td>Se comprueba</td><td>¿Puedes verificar el resultado a mano?</td><td>Sí = buena candidata</td></tr>\n        <tr><td>Es acotada</td><td>¿Cabe en una pantalla?</td><td>Sí = empieza por ahí</td></tr>\n    </table>\n    <div class=\"block block-pink\">\n        Si falla la comprobación, no empieces por ahí: no podrás saber si la app funciona.\n    </div>\n    "
+    },
+    {
+        "titulo": "Mapa de ideas por giro",
+        "num": "6 / 33",
+        "body": "\n    <table style=\"font-size:14px;\">\n        <tr><th>Giro</th><th>Idea más útil</th><th>Tipo</th></tr>\n        <tr><td>Papelería</td><td>Cotizador de útiles escolares</td><td>Cotizador</td></tr>\n        <tr><td>Ferretería</td><td>Calculadora de precio con margen</td><td>Finanzas</td></tr>\n        <tr><td>Fonda o cafetería</td><td>Menú que suma el pedido</td><td>Menú</td></tr>\n        <tr><td>Florería</td><td>Catálogo con pedido por WhatsApp</td><td>Marketplace</td></tr>\n        <tr><td>Estética</td><td>Agenda de citas sencilla</td><td>Menú / agenda</td></tr>\n        <tr><td>Taller</td><td>Presupuesto de refacciones y mano de obra</td><td>Cotizador</td></tr>\n    </table>\n    "
+    },
+    {
+        "titulo": "Cotizadores: qué resuelven",
+        "num": "7 / 33",
+        "body": "\n    <div class=\"columns\">\n        <div>\n            <strong style=\"color:#3d5a96;\">Problema</strong>\n            <ul>\n                <li>Sumar precios a mano toma tiempo.</li>\n                <li>Se olvidan productos o descuentos.</li>\n                <li>El cliente espera mucho.</li>\n                <li>Cada quien cotiza distinto.</li>\n            </ul>\n        </div>\n        <div>\n            <strong style=\"color:#3d5a96;\">Solución</strong>\n            <ul>\n                <li>Lista de precios precargada.</li>\n                <li>Cálculo automático.</li>\n                <li>Formato consistente.</li>\n                <li>Total con IVA al instante.</li>\n            </ul>\n        </div>\n    </div>\n    <div class=\"block block-blue\">\n        Un cotizador bien hecho ahorra minutos en cada cliente y evita discusiones por precios.\n    </div>\n    "
+    },
+    {
+        "titulo": "Anatomía de un cotizador",
+        "num": "8 / 33",
+        "body": "\n    <ol style=\"font-size:17px;line-height:2.1;\">\n        <li><strong>Catálogo:</strong> productos o servicios con precio.</li>\n        <li><strong>Selección:</strong> elegir producto y cantidad.</li>\n        <li><strong>Cálculo:</strong> subtotal, descuento, IVA y total.</li>\n        <li><strong>Datos del cliente:</strong> nombre y fecha (sin datos sensibles).</li>\n        <li><strong>Salida:</strong> imprimir, guardar PDF o enviar por WhatsApp.</li>\n    </ol>\n    <div class=\"block\">\n        <div class=\"block-title\">Regla</div>\n        Si tu cotización en papel tiene cinco columnas, la app debe tener las mismas cinco. No inventes un formato nuevo.\n    </div>\n    "
+    },
+    {
+        "titulo": "Ejemplo: cotizador de florería",
+        "num": "9 / 33",
+        "body": "\n    <div class=\"block block-vino\">\n        <div class=\"block-title\">Prompt</div>\n        \"Crea un cotizador para una florería. Productos con precio: ramo de rosas 450, arreglo primaveral 380, corona 900, florero 150. Permite cantidad y muestra subtotal, IVA y total. Agrega nombre del cliente y fecha. Botón para imprimir solo la cotización con el logotipo.\"\n    </div>\n    <div class=\"block block-blue\" style=\"margin-top:10px;\">\n        <div class=\"block-title\">Por qué funciona</div>\n        Tiene catálogo, cálculo, datos mínimos y salida clara. Es exactamente la anatomía del cotizador.\n    </div>\n    "
+    },
+    {
+        "titulo": "Finanzas: qué resolver",
+        "num": "10 / 33",
+        "body": "\n    <ul style=\"font-size:17px;line-height:2.1;\">\n        <li>¿A qué precio debo vender para ganar?</li>\n        <li>¿Cuánto me queda después del costo y el IVA?</li>\n        <li>¿Cuánto debo vender para cubrir mis gastos?</li>\n        <li>¿Qué pasa si subo el precio un 10%?</li>\n    </ul>\n    <div class=\"block block-pink\">\n        <div class=\"block-title\">Cuidado</div>\n        Una calculadora no decide por ti: te da números para decidir. El precio final depende de tu mercado y tu estrategia.\n    </div>\n    "
+    },
+    {
+        "titulo": "Calculadora de precio y margen",
+        "num": "11 / 33",
+        "body": "\n    <table>\n        <tr><th>Dato de entrada</th><th>Cálculo</th></tr>\n        <tr><td>Costo del producto</td><td>—</td></tr>\n        <tr><td>Margen deseado (%)</td><td>Precio = costo / (1 - margen)</td></tr>\n        <tr><td>IVA (%)</td><td>Precio final = precio × (1 + IVA)</td></tr>\n        <tr><td>Ganancia</td><td>Precio - costo</td></tr>\n    </table>\n    <div class=\"block block-blue\">\n        <div class=\"block-title\">Ejemplo</div>\n        Costo 100, margen 40%: precio = 166.67, IVA 26.67, final 193.33. Muchos confunden \"40% sobre el costo\" con \"40% de margen\": la app debe aclarar cuál usa.\n    </div>\n    "
+    },
+    {
+        "titulo": "Punto de equilibrio",
+        "num": "12 / 33",
+        "body": "\n    <p style=\"font-size:17px;line-height:1.7;\">El punto de equilibrio es <strong>cuántas unidades necesitas vender para cubrir tus gastos fijos</strong>.</p>\n    <div class=\"block block-blue center\" style=\"font-size:18px;\">\n        Unidades = Gastos fijos / (Precio - Costo variable)\n    </div>\n    <div class=\"block\">\n        <div class=\"block-title\">Ejemplo</div>\n        Renta y servicios: 8,000 al mes. Precio 90, costo variable 50. Unidades = 8,000 / 40 = 200. Vendiendo 200 piezas cubres los gastos; de ahí en adelante ganas.\n    </div>\n    <div class=\"block block-pink\">\n        Esta app es ideal para una segunda etapa: primero domina el cotizador.\n    </div>\n    "
+    },
+    {
+        "titulo": "Ejemplo: calculadora de finanzas",
+        "num": "13 / 33",
+        "body": "\n    <div class=\"block block-vino\">\n        <div class=\"block-title\">Prompt</div>\n        \"Crea una calculadora de precio de venta. Pide costo, margen deseado y gastos fijos del mes. Muestra precio de venta, ganancia por unidad y cuántas unidades necesito vender para cubrir los gastos fijos. Explica cada resultado en una línea sencilla.\"\n    </div>\n    <div class=\"block block-blue\" style=\"margin-top:10px;\">\n        <div class=\"block-title\">Verificación</div>\n        Anota tres combinaciones y compruébalas con calculadora. Si una falla, pide la corrección mostrando el caso exacto.\n    </div>\n    "
+    },
+    {
+        "titulo": "Menús: qué resolver",
+        "num": "14 / 33",
+        "body": "\n    <div class=\"columns\">\n        <div>\n            <strong style=\"color:#3d5a96;\">Problema</strong>\n            <ul>\n                <li>El cliente no sabe cuánto lleva.</li>\n                <li>El mesero suma de memoria.</li>\n                <li>El menú impreso se maltrata.</li>\n                <li>Cambiar precios cuesta.</li>\n            </ul>\n        </div>\n        <div>\n            <strong style=\"color:#3d5a96;\">Solución</strong>\n            <ul>\n                <li>Menú digital siempre actualizado.</li>\n                <li>El cliente arma su pedido.</li>\n                <li>Total automático.</li>\n                <li>Pedido enviado por WhatsApp.</li>\n            </ul>\n        </div>\n    </div>\n    "
+    },
+    {
+        "titulo": "Menú que suma el pedido",
+        "num": "15 / 33",
+        "body": "\n    <ol style=\"font-size:17px;line-height:2.1;\">\n        <li>Lista de platillos con precio.</li>\n        <li>Botones de cantidad (+ / -).</li>\n        <li>Total que se actualiza al instante.</li>\n        <li>Resumen del pedido.</li>\n        <li>Botón para enviar por WhatsApp.</li>\n    </ol>\n    <div class=\"block block-blue\">\n        <div class=\"block-title\">Extra útil</div>\n        Agrega nota \"sin cebolla\" o \"para llevar\" en un campo de texto. Es lo que más piden los clientes.\n    </div>\n    "
+    },
+    {
+        "titulo": "Ejemplo: menú de fonda",
+        "num": "16 / 33",
+        "body": "\n    <div class=\"block block-vino\">\n        <div class=\"block-title\">Prompt</div>\n        \"Crea el menú digital de una fonda. Platillos: enchiladas 85, tacos dorados 60, sopa de tortilla 45, agua fresca 20. El cliente elige cantidades, ve el total y escribe una nota. Al final, un botón de WhatsApp con el resumen del pedido. Diseño cálido, letra grande, ideal para celular.\"\n    </div>\n    <div class=\"block block-pink\" style=\"margin-top:10px;\">\n        <div class=\"block-title\">Prueba</div>\n        Dos enchiladas, un agua y nota \"sin cebolla\": total 190. Comprueba que el mensaje de WhatsApp incluya la nota.\n    </div>\n    "
+    },
+    {
+        "titulo": "Marketplaces: qué son",
+        "num": "17 / 33",
+        "body": "\n    <p style=\"font-size:17px;line-height:1.7;\">Un marketplace es un <strong>espacio donde se muestran productos de varios vendedores</strong>. Ejemplos: Mercado Libre, Amazon, Facebook Marketplace.</p>\n    <div class=\"block block-vino\">\n        <div class=\"block-title\">Realidad</div>\n        Un marketplace completo requiere pagos, cuentas, envíos y soporte. Para un negocio pequeño, la versión útil es un <strong>catálogo propio con pedido por WhatsApp</strong>.\n    </div>\n    "
+    },
+    {
+        "titulo": "Marketplace realista",
+        "num": "18 / 33",
+        "body": "\n    <table>\n        <tr><th>Versión</th><th>Qué incluye</th><th>Complejidad</th></tr>\n        <tr><td>Catálogo + WhatsApp</td><td>Productos, precios y botón de pedido</td><td>Baja</td></tr>\n        <tr><td>Catálogo con buscador</td><td>Filtros por categoría</td><td>Media</td></tr>\n        <tr><td>Carrito con pago</td><td>Pasarela de pago y envíos</td><td>Alta</td></tr>\n    </table>\n    <div class=\"block block-blue\">\n        Empieza por la versión baja. Cuando vendas de forma constante, invierte en la siguiente.\n    </div>\n    "
+    },
+    {
+        "titulo": "Ejemplo: catálogo con WhatsApp",
+        "num": "19 / 33",
+        "body": "\n    <div class=\"block block-vino\">\n        <div class=\"block-title\">Prompt</div>\n        \"Crea un catálogo para una tienda de abarrotes. Productos con nombre, precio y foto (usa imágenes de ejemplo). Cada tarjeta tiene un botón de WhatsApp que abre un mensaje: 'Quiero pedir [producto]'. Agrega un buscador arriba y que se vea en dos columnas en celular.\"\n    </div>\n    <div class=\"block\" style=\"margin-top:10px;\">\n        <div class=\"block-title\">Mejora posterior</div>\n        \"Agrega una categoría para bebidas y otra para limpieza.\"\n    </div>\n    "
+    },
+    {
+        "titulo": "Cómo elegir tu primera idea",
+        "num": "20 / 33",
+        "body": "\n    <ol style=\"font-size:17px;line-height:2.1;\">\n        <li>Haz una lista de cinco tareas que repites.</li>\n        <li>Marca las que tienen datos claros.</li>\n        <li>Elige la que puedas comprobar en cinco minutos.</li>\n        <li>Descarta la que dependa de datos que no tienes.</li>\n        <li>Empieza por la más pequeña, no por la más ambiciosa.</li>\n    </ol>\n    <div class=\"block block-pink\">\n        <div class=\"block-title\">Regla</div>\n        Si no puedes explicar la app en una frase, todavía no es una buena primera idea.\n    </div>\n    "
+    },
+    {
+        "titulo": "Matriz de decisión",
+        "num": "21 / 33",
+        "body": "\n    <table>\n        <tr><th>Idea</th><th>Se repite</th><th>Datos listos</th><th>Fácil de probar</th><th>Puntaje</th></tr>\n        <tr><td>Cotizador</td><td>Alto</td><td>Sí</td><td>Sí</td><td>9</td></tr>\n        <tr><td>Menú digital</td><td>Alto</td><td>Sí</td><td>Sí</td><td>9</td></tr>\n        <tr><td>Punto de equilibrio</td><td>Medio</td><td>Sí</td><td>Sí</td><td>7</td></tr>\n        <tr><td>Marketplace con pagos</td><td>Bajo</td><td>No</td><td>Difícil</td><td>3</td></tr>\n    </table>\n    <div class=\"block block-blue\">\n        Asigna 3 puntos a \"alto/sí\", 2 a \"medio\" y 1 a \"bajo/no\". Elige la idea con más puntos.\n    </div>\n    "
+    },
+    {
+        "titulo": "De la idea a la descripción",
+        "num": "22 / 33",
+        "body": "\n    <div class=\"columns\">\n        <div>\n            <strong style=\"color:#3d5a96;\">Idea</strong>\n            <p style=\"margin-top:8px;\">\"Quiero una app para cotizar.\"</p>\n        </div>\n        <div>\n            <strong style=\"color:#3d5a96;\">Descripción</strong>\n            <p style=\"margin-top:8px;\">\"App para cotizar arreglos florales: elijo producto y cantidad, suma subtotal, IVA y total, y la imprimo con el logotipo.\"</p>\n        </div>\n    </div>\n    <div class=\"block block-vino\" style=\"margin-top:10px;\">\n        La diferencia está en los detalles: producto, cálculo, salida y formato.\n    </div>\n    "
+    },
+    {
+        "titulo": "Los cinco puntos aplicados",
+        "num": "23 / 33",
+        "body": "\n    <table style=\"font-size:14px;\">\n        <tr><th>Punto</th><th>Cotizador</th><th>Menú</th></tr>\n        <tr><td>Qué hace</td><td>Calcula cotizaciones</td><td>Suma el pedido</td></tr>\n        <tr><td>Quién la usa</td><td>Mostrador</td><td>Cliente</td></tr>\n        <tr><td>Datos</td><td>Producto, cantidad</td><td>Platillo, cantidad</td></tr>\n        <tr><td>Resultado</td><td>Subtotal, IVA, total</td><td>Total y resumen</td></tr>\n        <tr><td>Vista</td><td>Tarjetas, botón imprimir</td><td>Letra grande, WhatsApp</td></tr>\n    </table>\n    "
+    },
+    {
+        "titulo": "Alcance: qué dejar para después",
+        "num": "24 / 33",
+        "body": "\n    <div class=\"columns\">\n        <div class=\"block block-blue\">\n            <div class=\"block-title\">Primera versión</div>\n            <ul>\n                <li>Una pantalla.</li>\n                <li>Datos fijos.</li>\n                <li>Un cálculo.</li>\n                <li>Una salida.</li>\n            </ul>\n        </div>\n        <div class=\"block block-pink\">\n            <div class=\"block-title\">Después</div>\n            <ul>\n                <li>Usuarios y contraseñas.</li>\n                <li>Pagos en línea.</li>\n                <li>Base de datos.</li>\n                <li>Reportes y gráficas.</li>\n            </ul>\n        </div>\n    </div>\n    <div class=\"block\">\n        <div class=\"block-title\">Por qué</div>\n        Cada función extra agrega complejidad y errores. La primera versión debe resolver una sola cosa.\n    </div>\n    "
+    },
+    {
+        "titulo": "Errores al elegir",
+        "num": "25 / 33",
+        "body": "\n    <table>\n        <tr><th>Error</th><th>Consecuencia</th><th>Mejor opción</th></tr>\n        <tr><td>Querer un sistema completo</td><td>No se termina</td><td>Empezar por una tarea</td></tr>\n        <tr><td>Elegir algo que no usas</td><td>Nadie la usa</td><td>Partir de una necesidad real</td></tr>\n        <tr><td>Depender de datos inexistentes</td><td>Resultados inventados</td><td>Ordenar datos primero</td></tr>\n        <tr><td>Copiar la app de otro giro</td><td>No encaja</td><td>Adaptar al propio negocio</td></tr>\n    </table>\n    "
+    },
+    {
+        "titulo": "Seguridad y datos",
+        "num": "26 / 33",
+        "body": "\n    <div class=\"block block-vino\">\n        <div class=\"block-title\">Antes de construir</div>\n        Decide qué datos <strong>no</strong> van a estar en la app: teléfonos de clientes, direcciones, identificaciones, información de pagos.\n    </div>\n    <ul style=\"margin-top:10px;\">\n        <li>Usa catálogos de ejemplo para probar.</li>\n        <li>No incluyas listas reales de clientes.</li>\n        <li>Si necesitas contacto, usa el botón de WhatsApp sin mostrar el número de terceros.</li>\n        <li>Borra los datos de prueba antes de compartir.</li>\n    </ul>\n    "
+    },
+    {
+        "titulo": "Actividad práctica",
+        "num": "27 / 33",
+        "body": "\n    <p style=\"font-size:17px;margin-bottom:10px;\"><strong>Meta:</strong> elegir y describir la app más útil para tu negocio.</p>\n    <ol style=\"font-size:16px;line-height:2;\">\n        <li>Lista cinco tareas que repites.</li>\n        <li>Aplica la matriz de decisión.</li>\n        <li>Escribe la descripción con los cinco puntos.</li>\n        <li>Construye una primera versión en AI Studio.</li>\n        <li>Pruébala con tres casos.</li>\n        <li>Entrega la descripción, capturas y pruebas.</li>\n    </ol>\n    <div class=\"block block-blue\">\n        <div class=\"block-title\">Entregable</div>\n        Un PDF de una página con la idea elegida, la matriz y la evidencia de la app funcionando.\n    </div>\n    "
+    },
+    {
+        "titulo": "Rúbrica de la actividad",
+        "num": "28 / 33",
+        "body": "\n    <table>\n        <tr><th>Criterio</th><th>Peso</th><th>Qué se observa</th></tr>\n        <tr><td>Pertinencia</td><td>25%</td><td>La idea resuelve una necesidad real</td></tr>\n        <tr><td>Claridad</td><td>25%</td><td>Describe los cinco puntos</td></tr>\n        <tr><td>Funcionalidad</td><td>30%</td><td>La app calcula y muestra bien</td></tr>\n        <tr><td>Pruebas</td><td>20%</td><td>Tres casos documentados</td></tr>\n    </table>\n    "
+    },
+    {
+        "titulo": "Resumen",
+        "num": "29 / 33",
+        "body": "\n    <ul style=\"font-size:17px;line-height:2.2;\">\n        <li>Una app sirve cuando la tarea se repite, tiene datos y se comprueba.</li>\n        <li>Cotizador, finanzas, menú y catálogo son las ideas con mayor retorno.</li>\n        <li>Empieza por una sola pantalla y un solo cálculo.</li>\n        <li>La descripción con los cinco puntos es la clave del resultado.</li>\n        <li>La seguridad de los datos se decide antes de construir.</li>\n    </ul>\n    <div class=\"block center\" style=\"margin-top:15px;\">\n        <div class=\"block-title\">Frase final</div>\n        <em>\"La mejor app no es la más completa, sino la que resuelve tu problema de hoy.\"</em>\n    </div>\n    "
+    },
+    {
+        "titulo": "Autoevaluación",
+        "num": "30 / 33",
+        "body": "\n    <ol style=\"font-size:17px;line-height:2.3;\">\n        <li>¿Qué tres condiciones debe cumplir una tarea para convertirse en app?</li>\n        <li>¿Qué diferencia hay entre cotizador y marketplace?</li>\n        <li>¿Qué datos necesita una calculadora de precio?</li>\n        <li>¿Por qué conviene empezar con una sola pantalla?</li>\n        <li>¿Qué datos nunca deben estar en el catálogo?</li>\n    </ol>\n    "
+    },
+    {
+        "titulo": "Glosario",
+        "num": "31 / 33",
+        "body": "\n    <table style=\"font-size:14px;\">\n        <tr><th>Término</th><th>Significado</th></tr>\n        <tr><td>Cotizador</td><td>App que calcula precios y totales de una venta.</td></tr>\n        <tr><td>Margen</td><td>Ganancia sobre el precio de venta.</td></tr>\n        <tr><td>Punto de equilibrio</td><td>Ventas necesarias para cubrir los gastos fijos.</td></tr>\n        <tr><td>Catálogo</td><td>Lista de productos con precios y fotos.</td></tr>\n        <tr><td>Marketplace</td><td>Espacio con productos de varios vendedores.</td></tr>\n    </table>\n    "
+    },
+    {
+        "titulo": "Consejos finales",
+        "num": "32 / 33",
+        "body": "\n    <div class=\"block block-blue\">\n        <div class=\"block-title\">Antes de construir</div>\n        <ul>\n            <li>Pregunta a quien usa la tarea qué le complica.</li>\n            <li>Revisa cómo lo hace hoy en papel.</li>\n            <li>Elige el caso más frecuente, no el más raro.</li>\n        </ul>\n    </div>\n    <div class=\"block\">\n        <div class=\"block-title\">Después de construir</div>\n        <ul>\n            <li>Úsala tú durante una semana.</li>\n            <li>Anota qué te falta.</li>\n            <li>Pide una mejora a la vez.</li>\n        </ul>\n    </div>\n    "
+    },
+    {
+        "titulo": "Gracias por su atención",
+        "num": "33 / 33",
+        "body": "<div class=\"final\">\n            <h2>¿Dudas o comentarios?</h2>\n            <p>Participa en el foro del tema</p>\n            <p style=\"margin-top:30px;color:#3d5a96;font-weight:700;\">ICATHI 4.0 — Inteligencia Artificial para tu Negocio</p>\n        </div>"
+    }
+];
+
+let actual = 0;
+
+function renderSlide(i) {
+    const s = slides[i];
+    const c = document.getElementById('slides-container');
+    if (s.tipo === 'portada') {
+        c.innerHTML = '<div class="slide portada">' +
+            '<div class="portada-bg"></div>' +
+            '<div class="franja1"></div><div class="franja2"></div><div class="franja3"></div><div class="franja4"></div>' +
+            '<div class="portada-content">' +
+            '<div class="campus">CAMPUS VIRTUAL</div>' +
+            '<h1>Inteligencia Artificial<span>para tu Negocio</span></h1>' +
+            '<div class="tema-label">' + PORTADA.etiqueta + '</div>' +
+            '<div class="tema">' + PORTADA.tema + '</div>' +
+            '<div class="instituto">' + PORTADA.instituto + '</div>' +
+            '<div class="fecha">2026</div>' +
+            '</div></div>';
+    } else {
+        c.innerHTML = '<div class="slide">' +
+            '<div class="slide-header"><h2>' + s.titulo + '</h2><span class="num">' + s.num + '</span></div>' +
+            '<div class="slide-body">' + s.body + '</div>' +
+            '<div class="slide-footer"><span>ICATHI 4.0</span><span>' + s.num + '</span></div>' +
+            '</div>';
+    }
+    document.getElementById('counter').textContent = 'Diapositiva ' + (i + 1) + ' de ' + slides.length;
+    document.querySelectorAll('.nav-bar button').forEach((b, idx) => {
+        b.classList.toggle('activo', idx === i);
+    });
+}
+
+function sig() {
+    if (actual < slides.length - 1) { actual++; renderSlide(actual); }
+}
+function ant() {
+    if (actual > 0) { actual--; renderSlide(actual); }
+}
+
+// Nav bar
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.createElement('div');
+    nav.className = 'nav-bar';
+    slides.forEach((_, i) => {
+        const b = document.createElement('button');
+        b.textContent = i + 1;
+        b.onclick = () => { actual = i; renderSlide(i); };
+        nav.appendChild(b);
+    });
+    document.body.insertBefore(nav, document.querySelector('.nav-controls'));
+    renderSlide(0);
+});
+</script>
+
+</body>
+</html>
